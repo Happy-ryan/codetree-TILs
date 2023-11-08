@@ -6,9 +6,7 @@ class Stack:
         self.items.append(item)
 
     def empty(self):
-        if not self.size():
-            return 1
-        return 0
+        return not self.items
 
     def size(self):
         return len(self.items)
@@ -34,7 +32,7 @@ for _ in range(cmd_num):
         if cmd[0] == "size":
             print(s.size())
         elif cmd[0] == "empty":
-            print(s.empty())
+            print(1 if s.empty() else 0)
         elif cmd[0] == "pop":
             print(s.pop())
         elif cmd[0] == "top":
