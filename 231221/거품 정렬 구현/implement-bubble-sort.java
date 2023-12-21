@@ -24,7 +24,6 @@ public class Main {
             boolean isSwap = false;
             for (int j = 0; j < n - i - 1; j++) {
                 if (arr.get(j) > arr.get(j + 1)) {
-                    // Swap elements if they are in the wrong order
                     int temp = arr.get(j);
                     arr.set(j, arr.get(j + 1));
                     arr.set(j + 1, temp);
@@ -32,7 +31,6 @@ public class Main {
                 }
             }
 
-            // If no two elements were swapped by inner loop, the array is already sorted
             if (!isSwap) {
                 break;
             }
