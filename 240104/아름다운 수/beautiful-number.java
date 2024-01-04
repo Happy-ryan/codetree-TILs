@@ -21,7 +21,7 @@ public class Main {
             if(start + ans.get(start) - 1 >= n){
                 return false;
             }
-            for(int end = start; end < start; end++){
+            for(int end = start; end < start + ans.get(start); end++){
                 if(ans.get(end) != ans.get(start)){
                     return false;
                 }
