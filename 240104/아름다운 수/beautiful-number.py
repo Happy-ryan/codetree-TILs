@@ -22,16 +22,34 @@ def is_beautiful_number(number):
                 return False
     return True
 
+
 cnt = 0
 res = []
+
+def is_beautiful():
+    s = 0
+    while s < n:
+        # res[s] - 1 
+        # 현재 위치 + 1 - 1
+        # res[s] - 2
+        # 현재위치 + 2 - 1
+        if s + res[s] - 1 >= n:
+            return False
+        for e in range(s, s + res[s]):
+            if res[e] != res[s]:
+                return False
+        s += res[s]
+
+    return True
+
 def dfs(idx):
     global cnt
     if idx == n:
-        if is_beautiful_number(res.copy()):
+        if is_beautiful():
             cnt += 1
         return
 
-    for i in ['1', '2', '3', '4']:
+    for i in range(1, 5):
         res.append(i)
         dfs(idx + 1)
         res.pop()
