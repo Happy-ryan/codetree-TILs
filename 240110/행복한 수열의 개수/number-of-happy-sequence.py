@@ -1,5 +1,5 @@
 # 시간복잡도: O(N)
-def is_happy(arr: list[int], m):
+def is_happy(m):
     start = arr[0]
     # start도 개수에 포함!
     cnt = 1
