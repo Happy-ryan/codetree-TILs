@@ -30,9 +30,12 @@ def extract_row(board: list[list[int]]):
     return res    
 # 시간복잡도: 수열고르기(O(N)) * 행복수열(O(N))
 def solution(n: int, m: int, board: list[list[int]]):
+    if n == 1:
+        return 2
     res = extract_row(board)
     cnt = 0
     for row in res:
+        print(row)
         if is_happy(row, m):
             cnt += 1
     return cnt
