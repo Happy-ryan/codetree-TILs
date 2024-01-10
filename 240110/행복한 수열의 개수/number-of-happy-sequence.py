@@ -35,7 +35,7 @@ def solution(n: int, m: int, board: list[list[int]]):
     res = extract_row(board)
     cnt = 0
     for row in res:
-        print(row)
+        # print(row)
         if is_happy(row, m):
             cnt += 1
     return cnt
