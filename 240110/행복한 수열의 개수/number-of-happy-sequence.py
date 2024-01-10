@@ -33,8 +33,8 @@ def solution(n: int, m: int, board: list[list[int]]):
     res = extract_row(board)
     cnt = 0
     for row in res:
-        # print(row, is_happy(row, m))
-        cnt += 1
+        if is_happy(row, m):
+            cnt += 1
     return cnt
         
 n, m = map(int, input().split())
