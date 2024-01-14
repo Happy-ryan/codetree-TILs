@@ -1,4 +1,4 @@
-def find_one(board):
+def find_bomb_position(board):
     res = []
     for i in range(n):
         for j in range(n):
@@ -8,7 +8,7 @@ def find_one(board):
 
 
 def is_range(r, c):
-    return 0 <= r < n and 0 <= c < n and board[r][c] == 0
+    return 0 <= r < n and 0 <= c < n
 
 
 def bomb_1(board, r, c):
@@ -70,8 +70,30 @@ def dfs(level, k):
 
 n = int(input())
 board = [list(map(int, input().split())) for _ in range(n)]
-bomb_list = find_one(board)
+bomb_list = find_bomb_position(board)
 k = len(bomb_list)
 ans = []
 dfs(0, k)
 print(max_region)
+
+
+# # 터진 영역 체크하고 추후 복구하기 위한 변수
+# # 어떤 폭탄 타입이 폭탄인지에 따라서 복구영역이 달라지므로 타입에 대해서도 체크해놔야함.
+# bombed = [[False for _ in range(n)] for _ in range(n)]
+# bomb_type = [[0 for _ in range(n)] for _ in range(n)]
+# # 폭탄 터질 자리
+# bomb_pos = find_bomb_position(board)
+# # 폭탄 터지기
+# def bomb_bomb(r, c, b_type):
+#     bomb_shapes = [
+#         [],
+#         [[-2, 0], [-1, 0], [0, 0], [1, 0], [2, 0]],
+#         [[-1, 0], [1, 0], [0, 0], [0, -1], [0, 1]],
+#         [[-1, -1], [-1, 1], [0, 0], [1, -1], [1, 1]]
+#     ]
+#     # 폭탄의 타입에 맞게 폭탄 터뜨리기
+#     for i in range(5):
+#         dr, dc = bomb_shapes[b_type][i]
+#         nr, nc = r + dr, c + dc
+#         if is_range(nr, nc):
+#             bombed[nr][nc] = True
