@@ -18,7 +18,7 @@ def in_range(r, c):
 
 
 def move(r, c):
-    final_dir = 0
+    final_dir = (0, 0)
     final_val = 0
     for k in range(4):
         nr, nc = r + dr[k], c + dc[k]
@@ -55,7 +55,6 @@ pos = change_0base([list(map(int, input().split())) for _ in range(m)])
 def simulate():
     for _ in range(t):
         one_time_move_all()
-    
     return len(pos)
 
 
