@@ -52,8 +52,11 @@ board = [list(map(int, input().split())) for _ in range(n)]
 pos = change_0base([list(map(int, input().split())) for _ in range(m)])
 
 # pos가 계속 변경
-for _ in range(t):
-    one_time_move_all()
+def simulate():
+    for _ in range(t):
+        one_time_move_all()
+    
+    return len(pos)
 
 
-print(len(pos))
+print(simulate())
