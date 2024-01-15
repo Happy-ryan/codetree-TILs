@@ -1,19 +1,19 @@
 from collections import defaultdict
 
 def find_cmd_and_number_count(s: str):
-    cmd_list, number_list = [], []
+    cmd_list, al_list = [], []
     for x in s:
         if x in "+-*":
             cmd_list.append(x)
         else:
-            number_list.append(x)
+            al_list.append(x)
 
-    return cmd_list, number_list
+    return cmd_list, al_list
 
 
-def calculate(cmd_list, number_list, number_dic):
-    tmp = number_dic[number_list[0]]
-    for cmd, number in zip(cmd_list, number_list[1:]):
+def calculate(cmd_list, al_list, number_dic):
+    tmp = number_dic[al_list[0]]
+    for cmd, number in zip(cmd_list, al_list[1:]):
         if cmd == "+":
             tmp += number_dic[number]
         elif cmd == "-":
@@ -61,3 +61,4 @@ s = input()
 solution(s)
 
 # 틀린이유1: 같은 알파벳에 대해서는 같은 값이 들어가야한다!
+# k개 중 하나를 n번 선택하는 백트래킹 유행 -> 모든 조합(순얄)을 만들어서 전수조사하는 것!
