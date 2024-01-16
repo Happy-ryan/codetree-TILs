@@ -15,12 +15,17 @@ def dfs(level):
         # [x] [cur_number] [cur_number] > ok
         # [cur_number] [x] [cur_number] > ok
         # [x] [x] [cur_number] > ok
-        # [cur_number] [cur_number] [cur_number] > 제외
+        # [cur_number] [cur_number] [cur_number] > 제외 > continue 조건으로 회피 가능
         # 길이가 2이상부터 3연속의 경우가 발생할 수 있다. 그 전에 -1, -2 체크하면 인덱스 에러 난다.
         if len(ans) < 2 or (len(ans) >= 2 and (ans[-1] != cur_number or ans[-2] != cur_number)):
             ans.append(cur_number)
             dfs(level + 1)
             ans.pop()
-
+        # if len(ans) >= 2 and ans[-1] == cur_number and ans[-2] == cur_number:
+        #     continue
+        # else:
+        #     ans.append(cur_number)
+        #     dfs(level + 1)
+        #     ans.pop()
 
 dfs(0)
