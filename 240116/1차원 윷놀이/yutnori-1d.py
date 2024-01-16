@@ -18,21 +18,30 @@ board = [0 for _ in range(k + 1)]
 max_score = 0
 def dfs(level):
     global max_score
+
+    # level이 n까지 도달하지 못하도록 갱신시키기...
+    # if level==n안에서 갱신시키면 level이 m에 도착했지만 n 레벨에 도달하지 못하면 갱신을 하지 못한다.
+    # 따라서 n번 미만 움직이더라도 갱신되도록 해야한다.
+    sum_val = sum([1 for x in board if x >= m - 1])
+    max_score = max(max_score, sum_val)
+
     if level == n:
-        sum_val = sum([1 for x in board if x >= m - 1])
+        # sum_val = sum([1 for x in board if x >= m - 1])
         # print(f"sum_val: {sum_val}, board: {board}")
-        max_score = max(max_score, sum_val)
+        # max_score = max(max_score, sum_val)
         return
     
     for cur_dice in range(1, k + 1):
         # conditional
-        # if board[cur_dice] >= m:
-        #     continue
+        # k = 1 일 때 continue로 들어가버리면 level이 n까지 가지 못하고 종료된다.
+        if board[cur_dice] >= m:
+            continue
         board[cur_dice] += move_numbers[level]
         dfs(level + 1)
         board[cur_dice] -= move_numbers[level]
 
 # k = 1일때 level == n에 안들어감...왜?
+# k = 1 일 때 continue로 들어가버리면 level이 n까지 가지 못하고 종료된다.
 
 dfs(0)
 print(max_score)
