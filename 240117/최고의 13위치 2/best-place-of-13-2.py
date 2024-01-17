@@ -15,12 +15,11 @@ def get_max_coin(cr, cc):
     for i in range(n):
         for j in range(n - 2):
             # 겹치지 않기 위해서는 j기준 양쪽을 모두 봐야한다!
-            if i == cr and (cc <= j <= cc + 2) or (cc - 2 <= j <= cc) :
+            if (i == cr and (cc <= j <= cc + 2)) or (i == cr and (cc - 2 <= j <= cc)):
                 continue
             k = board[i][j : j + 3].count(1)
             ans = max(ans, cnt + k)
     return ans
-
 
 
 ans = 0
