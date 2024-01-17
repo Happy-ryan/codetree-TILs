@@ -15,6 +15,8 @@ def get_max_coin(cr, cc):
     for i in range(n):
         for j in range(n - 2):
             # 겹치지 않기 위해서는 j기준 양쪽을 모두 봐야한다!
+            # 틀린이유2: i == cr and () or () 로 초기 설정을 했다.
+            # i == cr일 때 양쪽을 봐야하는데 저렇게 하면 양쪽을 보지 않는다.
             if (i == cr and (cc <= j <= cc + 2)) or (i == cr and (cc - 2 <= j <= cc)):
                 continue
             k = board[i][j : j + 3].count(1)
