@@ -1,3 +1,7 @@
+# 시간복잡도
+# O(N^2) : 바둑판 전부 돌아야함
+# O(5 -> 1)
+# O(N^2)
 n = 19
 board = [list(map(int, input().split())) for _ in range(19)]
 
