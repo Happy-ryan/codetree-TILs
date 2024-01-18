@@ -40,7 +40,7 @@ def is_omok_vertical(r, c):
         return True
     return False
 
-def is_omok_diagonal_left(r, c):
+def is_omok_diagonal_right(r, c):
     if board[r][c] == 0:
         return
     # 대각선
@@ -59,7 +59,7 @@ def is_omok_diagonal_left(r, c):
     return False
 
 
-def is_omok_diagonal_right(r, c):
+def is_omok_diagonal_left(r, c):
     if board[r][c] == 0:
         return
     # 대각선
@@ -82,18 +82,22 @@ def solution():
         for c in range(19):
             if is_omok_horizontal(r, c):
                 # 정답은 1base
+                # print("1", r, c)
                 print(board[r][c])
                 print(r + 1, c + 2 + 1)
                 return
             if is_omok_vertical(r, c):
+                # print("2", r, c)
                 print(board[r][c])
                 print(r + 2 + 1, c + 1)
                 return
             if is_omok_diagonal_right(r, c):
+                # print("3", r, c)
                 print(board[r][c])
                 print(r + 2 + 1, c + 2 + 1)
                 return
             if is_omok_diagonal_left(r, c):
+                # print("4", r, c)
                 print(board[r][c])
                 print(r + 2 + 1, c - 2 + 1)
                 return
