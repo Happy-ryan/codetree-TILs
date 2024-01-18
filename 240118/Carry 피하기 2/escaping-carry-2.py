@@ -8,7 +8,7 @@ n = int(input())
 numbers = [input() for _ in range(n)]
 
 
-def is_carry(x, y, z):
+def is_carry(x: str, y: str, z: str):
     longest_len = max(len(x), len(y), len(z))
     carrier = [0] * longest_len
     x = '0'* (longest_len - len(x)) + x
@@ -19,7 +19,7 @@ def is_carry(x, y, z):
         carrier[idx] = int(x[idx]) + int(y[idx]) + int(z[idx])
 
     for x in carrier:
-        if x > 10:
+        if x >= 10:
             return False
     return True
 
