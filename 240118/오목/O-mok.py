@@ -101,4 +101,6 @@ def solution():
                 print(board[r][c])
                 print(r + 2 + 1, c - 2 + 1)
                 return
+    print(0)
+    return
 solution()
