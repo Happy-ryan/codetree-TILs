@@ -9,7 +9,10 @@ def in_range(r, c):
 # 0 2 2 2 2 2 0 0... 오목의 중간은 고려하지 않는다. 
 # 무조건 양끝 점에서 오목이 되는지 확인한다.
 # row 선행  ->->-> 그 다음 다음 줄..
+# 따져야할 범위: (0, 1) / (1, 0) / (1, 1), (1, -1)
 # 따라서 오목이라면 왼쪽끝(누워있는 경우), 맨위(일어서있는경우), || 왼쪽끝/오른쪽끝(대각선) 
+dir = [(0, 1), (1, 0), (1, 1), (1, -1)]
+
 def is_omok_horizontal(r, c):
     if board[r][c] == 0:
         return
@@ -81,7 +84,8 @@ def solution():
     for r in range(19):
         for c in range(19):
             if is_omok_horizontal(r, c):
-                # 정답은 1base
+                # 정답은 1base + 1
+                # 중간값 + 2
                 # print("1", r, c)
                 print(board[r][c])
                 print(r + 1, c + 2 + 1)
