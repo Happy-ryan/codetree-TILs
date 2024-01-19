@@ -12,7 +12,7 @@ def choose_first_room(people):
     return dist
 
 
-total_dist = 1003 * 100 + 1
+total_dist = 100000000
 
 for _ in range(n):
     people = people[1:] + [people[0]]
