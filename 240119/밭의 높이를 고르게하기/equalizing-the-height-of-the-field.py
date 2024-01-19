@@ -9,14 +9,14 @@ highs = list(map(int, input().split()))
 def cal(row):
     cost = 0
     for h in row:
-        cost += abs(h - T)
+        cost += abs(h - H)
     return cost
 
 min_cost = 10000000
 for i in range(0, N - T + 1):
     cost = 0
     for j in range(i, i + T):
-        cost += abs(highs[j] - T)
+        cost += abs(highs[j] - H)
     min_cost = min(min_cost, cost)
 
 print(min_cost)
