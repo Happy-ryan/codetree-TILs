@@ -24,11 +24,12 @@ public class Main {
         for (int[] predict : predicts) {
             Set<Integer> candidateList = new HashSet<>();
             for (int candidateNumber = 100; candidateNumber < 1000; candidateNumber++) {
-                //  predict가 변경되고 있음!
+                //  틀린이유: predict가 변경되고 있음! -> check 함수 변경해야함
                 if (check(candidateNumber, predict)) {
                     candidateList.add(candidateNumber);
                 }
             }
+            // 교집합
             cnt.retainAll(candidateList);
         }
 
