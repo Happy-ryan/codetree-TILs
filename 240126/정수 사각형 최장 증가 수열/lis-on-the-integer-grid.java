@@ -56,7 +56,7 @@ public class Main {
         }
 
         if(isStart){
-            ret = 1;
+            return 1;
         }
 
         dp[r][c] = ret;
