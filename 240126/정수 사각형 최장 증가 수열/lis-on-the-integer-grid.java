@@ -44,21 +44,14 @@ public class Main {
             return dp[r][c];
         }
 
-        boolean isStart = true;
-        int ret = -INF;
+        int ret = 1;
         for (int dir = 0; dir < 4; dir++) {
             int pre_r = r + dr[dir];
             int pre_c = c + dc[dir];
             if (inRange(pre_r, pre_c) && board[r][c] > board[pre_r][pre_c]) {
-                isStart = false;
                 ret = Math.max(ret, dpf(pre_r, pre_c) + 1);
             }
         }
-
-        if(isStart){
-            return 1;
-        }
-
         dp[r][c] = ret;
 
         return ret;
