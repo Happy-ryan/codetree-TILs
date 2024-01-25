@@ -5,7 +5,7 @@ sys.setrecursionlimit(n**2)
 
 
 board = [list(map(int, input().split())) for _ in range(n)]
-dp = [[-1 for _ in range(n)] for _ in range(n)]
+dp = [[-1 for _ in range(n)] for _ in range(n)] # O(4*N^2)
 
 inf = int(1e8)
 
@@ -35,12 +35,13 @@ def dpf(r, c):
 
     # 시작점 - 출발점일 때...
     if is_start:
-        return 1
+        ret = 1
 
     dp[r][c] = ret
 
     return ret
 
+# O(N^2 + 4*N^2) = O(5 * N^2)
 max_ret = 0
 for r in range(n):
     for c in range(n):
