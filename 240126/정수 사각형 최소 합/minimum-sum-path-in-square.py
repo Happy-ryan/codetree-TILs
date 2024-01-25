@@ -1,34 +1,3 @@
-# def dfs(r, c):
-#     print(f"=dfs({r},{c}) 진입합니다!=")
-#     if dp[r][c] != -1:
-#         print("여기")
-#         return dp[r][c]
-
-#     # 도착지점에 도착 > 갱신
-#     if r == n - 1 and c == 0:
-#         print(f"=도착했습니다. dfs({r},{c}) 종료합니다!=")
-#         return board[r][c]
-
-#     dr = [1, 0]
-#     dc = [0, -1]
-
-#     min_sum = 1000000 * 100
-#     for k in range(2):
-#         print(f"k = {k}입니다.")
-#         nr = r + dr[k]
-#         nc = c + dc[k]
-
-#         if in_range(nr, nc):
-#             min_sum = min(min_sum, dfs(nr, nc) + board[r][c])
-    
-#     print(f"=dfs({r},{c}) 종료합니다!=")
-#     dp[r][c] = min_sum
-
-#     return min_sum
-
-
-
-
 # dp[r][c]: (0, n-1) 에서 출발해서 (r, c)에 도착하기까지 경로위의 수의 합 중 최소값.
 # dpf(r, c) = min(dpf(r-1, c), dpf(r, c+1)) + val[r][c]
 # 1. no recursive
