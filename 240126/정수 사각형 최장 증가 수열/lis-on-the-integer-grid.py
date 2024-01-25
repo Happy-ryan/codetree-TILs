@@ -1,7 +1,9 @@
-import sys
-sys.setrecursionlimit(10**7)
-
 n = int(input())
+
+import sys
+sys.setrecursionlimit(n**2)
+
+
 board = [list(map(int, input().split())) for _ in range(n)]
 dp = [[-1 for _ in range(n)] for _ in range(n)]
 
