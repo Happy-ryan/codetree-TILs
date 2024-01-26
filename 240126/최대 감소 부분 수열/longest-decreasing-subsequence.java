@@ -17,8 +17,13 @@ public class Main {
             numbers[i] = x;
             dp[i] = -1;
         }
+        // 도착점은 여려개!!
+        int maxLength = 0;
+        for(int endpoint = 0; endpoint < n; endpoint++){
+            maxLength = Math.max(maxLength, dpf(endpoint));
+        }
 
-        System.out.println(dpf(n - 1));
+        System.out.println(maxLength);
     }
     // max: 최대 길이를 구하므로
     // dpf(x) = max(ret, dpf(y) where 0 <= y < x and numbers[y] > numbers[x] + 1)
