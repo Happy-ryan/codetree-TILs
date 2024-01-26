@@ -2,9 +2,13 @@ import java.util.*;
 
 public class Main {
     public static int n;
-    public static int[][] board;
 
+    public static int[][] board;
     public static int[][] dp;
+
+    public static int[] dr = new int[]{-1, 0};
+    public static int[] dc = new int[]{0, -1};
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
@@ -16,7 +20,7 @@ public class Main {
             }
         }
 
-        dp = new int[n + 1][n + 1];
+        dp = new int[n][n];
         System.out.println(dpf(n - 1, n - 1));
     }
     public static boolean inRange(int r, int c){
@@ -29,17 +33,20 @@ public class Main {
             return dp[r][c];
         }
 
-        if (!inRange(r - 1, c) && !inRange(r, c - 1)) {
-            return board[r][c];
+        boolean isStartPoint = true;
+        
+        int ret = 1000001;
+        for (int d = 0; d < 2; d++) {
+            int pre_r = r + dr[d];
+            int pre_c = c + dc[d];
+            if (inRange(pre_r, pre_c)) {
+                ret = Math.min(ret, Math.max(dpf(pre_r, pre_c), board[r][c]));
+                isStartPoint = false;
+            }
         }
 
-        // 최대값의 최소값 ...  min(max(xx))
-        int ret = 1000001;
-        if (inRange(r - 1, c)){
-            ret = Math.min(ret, Math.max(dpf(r - 1, c), board[r][c]));
-        }
-        if (inRange(r, c - 1)){
-            ret = Math.min(ret, Math.max(board[r][c], dpf(r, c - 1)));
+        if (isStartPoint) {
+            return board[r][c];
         }
 
         dp[r][c] = ret;
