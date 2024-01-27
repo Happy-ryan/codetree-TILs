@@ -1,6 +1,9 @@
 import java.util.*;
 
 public class Main {
+
+    public static final int INF = 1000000000;
+
     public static int n;
 
     public static int[] dp;
@@ -35,8 +38,9 @@ public class Main {
             return 0;
         }
 
-        int ret = -10000000;
-        for (int start = 0; start < x; start++) {
+        int ret = -INF; //??
+        // 도착점은 1부터 가능하므로 시작점도 0부터 가능함
+        for (int start = 1; start < x; start++) {
             if (start + numbers[start] >= x) {
                 ret = Math.max(ret, dpf(start) + 1);
             }
