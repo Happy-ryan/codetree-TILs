@@ -35,10 +35,10 @@ public class Main {
             return 0;
         }
 
-        int ret = -1;
-        for (int start = 1; start < x; start++) {
+        int ret = -10000000;
+        for (int start = 0; start < x; start++) {
             if (start + numbers[start] >= x) {
-                ret = Math.max(ret, dpf(start)) + 1;
+                ret = Math.max(ret, dpf(start) + 1);
             }
         }
 
