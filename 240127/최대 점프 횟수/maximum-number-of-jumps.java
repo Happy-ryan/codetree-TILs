@@ -18,33 +18,48 @@ public class Main {
             dp[i] = -1;
         }
 
-        System.out.println(dpf(n));
+        // System.out.println(dpf(n));
 
-        // for (int x : dp) {
+        // for (int x : numbers) {
         //     System.out.print(x + " ");
         // }
 
+        // for (int x : dp) {
+        //     System.out.print(x + " ");
+        //     }
+        int maxVal = 0;
+        for(int i = 1; i <= n; i++){
+            maxVal = Math.max(maxVal, dpf(i));
+            // for (int x : dp) {
+            //     System.out.print(x + " ");
+            // }
+            // System.out.println();
+        }
+        System.out.println(maxVal);
+
     }
-    // dpf(n) =  max(ret, dpf(i) where 1 <= i < n and i(현재위치) + numbers[i](점프할 수 있는 길이) >= n(도착점))
-    public static int dpf(int n) {
-        // 시작점
-        if (n == 1) {
+    // dpf(x) =  max(ret, dpf(i) where 1 <= i < x and i(현재위치) + numbers[i](점프할 수 있는 길이) >= n(도착점))
+    // 시작점이 고정된 문제..
+    public static int dpf(int x) {
+        if (dp[x] != -1) {
+            return dp[x];
+        }
+
+        if (x == 1) {
             return 0;
         }
-        if (dp[n] != -1) {
-            return dp[n];
-        }
 
-        int ret = dp[n];
-        for (int i = 1; i < n; i++) {
-            if (i + numbers[i] >= n) {
-                ret = Math.max(ret, dpf(i) + 1);
+        int ret = -1;
+        for (int start = 1; start < x; start++) {
+            if (start + numbers[start] >= x) {
+                ret = Math.max(ret, dpf(start) + 1);
+                // System.out.println("ret: " + ret);
+                // System.out.println("dpf(start): " + start + "/" + dpf(start));
             }
         }
-        
-        dp[n] = ret;
+
+        dp[x] = ret;
 
         return ret;
-
-    }   
+    }
 }
