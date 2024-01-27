@@ -17,23 +17,9 @@ public class Main {
             numbers[i] = sc.nextInt();
             dp[i] = -1;
         }
-
-        // System.out.println(dpf(n));
-
-        // for (int x : numbers) {
-        //     System.out.print(x + " ");
-        // }
-
-        // for (int x : dp) {
-        //     System.out.print(x + " ");
-        //     }
         int maxVal = 0;
         for(int i = 1; i <= n; i++){
             maxVal = Math.max(maxVal, dpf(i));
-            // for (int x : dp) {
-            //     System.out.print(x + " ");
-            // }
-            // System.out.println();
         }
         System.out.println(maxVal);
 
@@ -52,9 +38,7 @@ public class Main {
         int ret = -1;
         for (int start = 1; start < x; start++) {
             if (start + numbers[start] >= x) {
-                ret = Math.max(ret, dpf(start) + 1);
-                // System.out.println("ret: " + ret);
-                // System.out.println("dpf(start): " + start + "/" + dpf(start));
+                ret = Math.max(ret, dpf(start)) + 1;
             }
         }
 
