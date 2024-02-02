@@ -20,7 +20,7 @@ public class Main {
             }
         }
 
-        int maxAnswer = 0;
+        int maxAnswer = 1;
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
                 maxAnswer = Math.max(dpf(i, j), maxAnswer);
@@ -37,7 +37,7 @@ public class Main {
             return dp[r][c];
         }
         // 최소는 1이다.
-        int ret = 1;
+        int ret = 0;
         for (int preR = 0; preR < r; preR++) {
             for (int preC = 0; preC < c; preC++) {
                 if (board[preR][preC] < board[r][c]){
@@ -50,7 +50,6 @@ public class Main {
         if (r == 0 && c == 0) {
             return 1;
         }
-
 
         dp[r][c] = ret;
         return ret;
