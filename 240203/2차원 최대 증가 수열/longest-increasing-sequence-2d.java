@@ -47,9 +47,11 @@ public class Main {
 
         System.out.print(maxAnswer);
     } 
-    // dpf(r, c) = (0, 0) ~ (r, c) 도착할 때까지의 최대 칸의 수
+    // dpf(r, c) = (0, 0) ~ (r, c) 도착할 때까지의 최대 칸의 수 if value > 0
+    //           = 0 if impossible
     // dpf(r, c) = max(dpf(preR, preC) + 1, ret) where 0 <= preR < R and 0 <= preC < c 
     // and board[preR][preC] < board[r][c] 
+    // and dpf(preR, preC) > 0
     // 시작점이 board[0][0]보다는 무조건 커야함!
     // 틀린 이유? 0이라는 값을 불가능 하다고 처리했는데, +1로 수가 되어버린것
     // dpf(r, c) == 0: 도착 불가
@@ -63,10 +65,9 @@ public class Main {
         for (int preR = 0; preR < r; preR++) {
             for (int preC = 0; preC < c; preC++) {
                 if (board[preR][preC] < board[r][c]) {
-                    int prev = dpf(preR, preC);
-                    if (prev != 0) {
-                        ret = Math.max(prev + 1, ret);
-                    }
+                    if (dpf(preR, preC) == 0)
+                        continue;
+                    ret = Math.max(dpf(preR, preC) + 1, ret);
                 }
             }
         }
