@@ -27,7 +27,8 @@ for r in range(n):
             continue
         cnt = 0
         dfs(r, c)
-        cnts.append(cnt)
+        if cnt != 0:
+            cnts.append(cnt)
 
 cnts.sort()
 print(len(cnts))
