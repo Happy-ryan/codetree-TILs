@@ -7,7 +7,7 @@ def sum_val(n):
 # sum을 그대로 하면 시간초과가 100퍼 난다!
 # 다른 방법이 필요해보인다.
 def binary_search(target: int):
-    l, r = 0, target
+    l, r = 0, int(1e8)
     ans = -1
     while l <= r:
         mid = (l + r) // 2
