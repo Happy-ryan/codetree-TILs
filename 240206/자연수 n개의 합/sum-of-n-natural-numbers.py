@@ -11,7 +11,7 @@ def binary_search(target: int):
     ans = -1
     while l <= r:
         mid = (l + r) // 2
-        if sum_val(mid) < target:
+        if sum_val(mid) <= target:
             ans = mid
             l = mid + 1
         else:
