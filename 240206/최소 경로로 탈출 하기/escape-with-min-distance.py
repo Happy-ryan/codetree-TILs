@@ -5,7 +5,8 @@
 n, m = map(int, input().split())
 board = [list(map(int, input().split())) for _ in range(n)]
 in_queue = [[False for _ in range(m)] for _ in range(n)]
-visited = [[0 for _ in range(m)] for _ in range(n)]
+inf = int(1e9)
+visited = [[inf for _ in range(m)] for _ in range(n)]
 
 from collections import deque
 
@@ -35,4 +36,7 @@ bfs()
 
 
 
-print(visited[n - 1][m - 1])
+ans = visited[n - 1][m - 1]
+if ans >= inf:
+    ans = -1
+print(ans)
