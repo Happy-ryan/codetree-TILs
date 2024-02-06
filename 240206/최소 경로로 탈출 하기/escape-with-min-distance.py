@@ -19,9 +19,8 @@ def bfs():
     dq = deque([])
 
     dq.append((0, 0))
-    visited[0][0] = 1
+    visited[0][0] = 0
 
-    
     while dq:
         cr, cc = dq.popleft()
         for dir in range(4):
@@ -29,8 +28,11 @@ def bfs():
             nc = cc + dc[dir]
             if in_range(nr, nc) and board[nr][nc] == 1:
                 dq.append((nr, nc))
+                in_queue[nr][nc] = True
                 visited[nr][nc] = visited[cr][cc] + 1 
 
 bfs()
+
+
 
 print(visited[n - 1][m - 1])
