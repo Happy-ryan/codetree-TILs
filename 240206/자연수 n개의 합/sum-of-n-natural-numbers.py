@@ -8,7 +8,7 @@ def sum_val(n):
 
 # s 보다 작은 1 ~ n까지의 합에서 n의 최댓값
 def binary_search(target: int):
-    l, r = 0, target
+    l, r = 0, int(1e5)
     ans = -1
     while l <= r:
         mid = (l + r) // 2
