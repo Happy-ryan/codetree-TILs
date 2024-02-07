@@ -9,7 +9,7 @@ def get_divide(nums, q):
 
 # nums의 숫자들을 k로 나누었을 때 m개가 되게하는 k의 최댓값
 def binary_search(target_m: int):
-    l, r = 0, max(nums)
+    l, r = 1, max(nums)
     # 최댓값이므로.
     ans = -1
     while l <= r:
