@@ -11,7 +11,7 @@ def get_divide(nums, q):
 def binary_search(target_m: int):
     l, r = 1, max(nums)
     # 최댓값이므로.
-    ans = -1
+    ans = 0
     while l <= r:
         mid = (l + r) // 2
         if get_divide(nums, mid) >= target_m:
