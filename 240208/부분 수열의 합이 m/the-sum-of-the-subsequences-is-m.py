@@ -22,7 +22,7 @@ dp = [[-1 for _ in range(m + 1)] for _ in range(n + 1)]
 
 # dpf(i, j): i번째 코인을 사용해서 j금액을 만든다!
 # dpf(i, j) = dpf(i - 1, j)(i번째 coin 안사용한 경우) + dpf(i - 1, j - coin[i])
-# 
+# -1 방문을 안함 / 0 불가능
 def dpf(i, j):
     if dp[i][j] != -1:
         return dp[i][j]
@@ -39,7 +39,12 @@ def dpf(i, j):
 
     return ret
 
-print(dpf(n, m))
+ans = dpf(n, m)
+
+if ans == 0:
+    ans = -1
+
+print(ans)
     
 
 
