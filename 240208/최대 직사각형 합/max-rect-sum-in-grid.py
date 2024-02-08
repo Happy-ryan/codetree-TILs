@@ -16,7 +16,7 @@ def range_sum(r1, c1, r2, c2):
     return psum[r2 + 1][c2 + 1] - psum[r2 + 1][c1] - psum[r1][c2 + 1] + psum[r1][c1]
 
 
-ans = 0
+ans = -1000 * 300 * 300
 for r1 in range(n):
     for c1 in range(n):
         for r2 in range(r1, n):
