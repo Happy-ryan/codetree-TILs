@@ -24,15 +24,18 @@ dp = [[-1 for _ in range(m + 1)] for _ in range(n + 1)]
 # dpf(i, j) = dpf(i - 1, j)(i번째 coin 안사용한 경우) + dpf(i - 1, j - coin[i])
 # -1 방문을 안함 / 0 불가능
 def dpf(i, j):
-    if dp[i][j] != -1:
-        return dp[i][j]
-    
     if i == 0:
         if j == 0:
             return 1
         else:
             return 0
+    if j < 0:
+        return 0
 
+    if dp[i][j] != -1:
+        return dp[i][j]
+    
+    
     ret = dpf(i - 1, j) + dpf(i - 1, j - coins[i])
 
     dp[i][j] = ret
