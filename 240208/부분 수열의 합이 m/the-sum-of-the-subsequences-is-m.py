@@ -22,21 +22,21 @@ dp = [[-1 for _ in range(m + 1)] for _ in range(n + 1)]
 
 # dpf(i, j): i번째 코인을 사용해서 j금액을 만든다!
 # dpf(i, j) = dpf(i - 1, j)(i번째 coin 안사용한 경우) + dpf(i - 1, j - coin[i])
-# -1 방문을 안함 / 0 불가능
+# -1 방문을 안함 / inf 불가능
 def dpf(i, j):
     if i == 0:
         if j == 0:
-            return 1
-        else:
             return 0
+        else:
+            return inf
     if j < 0:
-        return 0
+        return inf
 
     if dp[i][j] != -1:
         return dp[i][j]
-    
-    
-    ret = dpf(i - 1, j) + dpf(i - 1, j - coins[i])
+
+
+    ret = min(dpf(i - 1, j), dpf(i - 1, j - coins[i]) + 1)
 
     dp[i][j] = ret
 
@@ -44,7 +44,7 @@ def dpf(i, j):
 
 ans = dpf(n, m)
 
-if ans == 0:
+if ans == inf:
     ans = -1
 
 print(ans)
