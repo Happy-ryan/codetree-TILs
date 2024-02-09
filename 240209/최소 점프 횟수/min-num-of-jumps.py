@@ -20,4 +20,9 @@ def dfs(idx: int):
         
         
 dfs(0)
-print(min_val)
+
+ans = min_val
+if ans >= 11:
+    ans = -1
+
+print(ans)
