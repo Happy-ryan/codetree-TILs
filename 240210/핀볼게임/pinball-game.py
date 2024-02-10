@@ -7,35 +7,22 @@ board = [list(map(int, input().split())) for _ in range(n)]
 # /: 동(0) -> 북(3)-반시계|| 북(3) -> 동(0)-시계
 # /: 남(1) -> 서(2)-시계 || 사(2) -> 남(1)-반시계
 # \: 동(0) -> 남(1)-시계 || 남(1) -> 동(0)-반시계
+# \: 서(2)) -> 북(3)
 
+# 1번  0<->3 1<->2 
+# 2번  2<->3 0<->1
 def change_dir(r, c, d):
     if board[r][c] == 1:
-        if d == 0:
-            d = 3
-        elif d == 1:
-            d = 2
-        elif d == 2:
-            # 틀린이유!
-            d = 1
-        elif d == 3:
-            d = 0
+        d = 3 - d
     elif board[r][c] == 2:
-        if d == 0:
-            d = 1
-        elif d == 1:
-            d = 0
-        elif d == 2:
-            d = 3
-        elif d == 3:
-            d = 2
-    else:
-        d = d
+        if d == 2 or d == 0:
+            d += 1
+        else:
+            d -= 1
 
     return d
 
 
-# [1 - /] 반시계방향 (cur + 1) % 4
-# [2 - \] 시계방향 (cur + 3) % 4
 dr = [0, 1, 0, -1]
 dc = [1, 0, -1, 0]
 
@@ -53,12 +40,11 @@ def simulate(r, c, d):
     return nr, nc, d
 
 check = []
-for col in range(n):
-    check.append((0, col, 1))
-    check.append((n - 1, col, 3))
-for row in range(n):
-    check.append((row, 0, 0))
-    check.append((row, n - 1, 2))
+for i in range(n):
+    check.append((0, i, 1))
+    check.append((n - 1, i, 3))
+    check.append((i, 0, 0))
+    check.append((i, n - 1, 2))
 
 max_ans = 0
 for r, c, d in check:
