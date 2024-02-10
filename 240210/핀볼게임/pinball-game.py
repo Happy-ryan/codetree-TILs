@@ -15,7 +15,8 @@ def change_dir(r, c, d):
         elif d == 1:
             d = 2
         elif d == 2:
-            d == 1
+            # 틀린이유!
+            d = 1
         elif d == 3:
             d = 0
     elif board[r][c] == 2:
@@ -24,7 +25,7 @@ def change_dir(r, c, d):
         elif d == 1:
             d = 0
         elif d == 2:
-            d == 3
+            d = 3
         elif d == 3:
             d = 2
     else:
@@ -62,6 +63,7 @@ for row in range(n):
 max_ans = 0
 for r, c, d in check:
     t = 2
+    # print(f"초입 - r: {r},c: {c}, d: {d}, t: {t}")
     while True:
         r, c, d = simulate(r, c, d)
         if not in_range(r, c):
@@ -69,6 +71,7 @@ for r, c, d in check:
         else:
             t += 1
             # print(f"r: {r},c: {c}, d: {d}, t: {t}")
+    # print(f"결과 - r: {r},c: {c}, d: {d}, t: {t}")
     max_ans = max(max_ans, t)
 
 print(max_ans)
