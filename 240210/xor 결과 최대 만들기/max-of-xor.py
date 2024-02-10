@@ -3,9 +3,9 @@
 n, m = map(int, input().split())
 nums = list(map(int, input().split()))
 
-
+# XOR 연산의 초기값은 0으로 설정됩니다. 왜냐하면 0과 어떤 숫자 x를 XOR 연산하면 결과는 x가 되기 때문
 def xor_cal(arr: list[int]):
-    ans = 1
+    ans = 0
     for x in arr:
         ans ^= x
     return ans
