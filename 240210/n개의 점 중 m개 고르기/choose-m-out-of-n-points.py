@@ -12,10 +12,10 @@ def dist(x1, y1, x2, y2):
 # 두 점 사이의 거리는 완탐을 돌리자 > 최대 20C10 = 184756 > 시간초과 걸리겠는데..?
 # nCm * mC2 = 20C10 * 10C2 
 def cal(ans):
-    min_val = 1000
+    max_val = 0
     for p1, p2 in combinations(ans, 2):
-        min_val = min(min_val, dist(p1.x, p1.y, p2.x, p2.y))
-    return min_val
+        max_val = max(max_val, dist(p1.x, p1.y, p2.x, p2.y))
+    return max_val
 
 
 n, m = map(int, input().split())
