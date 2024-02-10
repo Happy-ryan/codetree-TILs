@@ -1,7 +1,6 @@
 n = int(input())
 board = [list(map(int, input().split())) for _ in range(n)]
-# 나가고 들어오는 시간
-t = 2
+
 # 격자 안에서 단일 객체의 이동 + 시계 & 반시계 90도 회전이 있는 문제!
 # 회전 - 동(0) 남(1) 서(2) 북(3)
 # 반시계 - 시계가 정확하게 나뉘어지는게 아님!!
@@ -52,14 +51,24 @@ def simulate(r, c, d):
 
     return nr, nc, d
 
-r, c, d = 4, 0, 0
-while True:
-    r, c, d = simulate(r, c, d)
-    if not in_range(r, c):
-        break
-    else:
-        t += 1
-        # print(f"r: {r},c: {c}, d: {d}, t: {t}")
-        
+check = []
+for col in range(n):
+    check.append((0, col, 1))
+    check.append((n - 1, col, 3))
+for row in range(n):
+    check.append((row, 0, 0))
+    check.append((row, n - 1, 2))
 
-print(t)
+max_ans = 0
+for r, c, d in check:
+    t = 2
+    while True:
+        r, c, d = simulate(r, c, d)
+        if not in_range(r, c):
+            break
+        else:
+            t += 1
+            # print(f"r: {r},c: {c}, d: {d}, t: {t}")
+    max_ans = max(max_ans, t)
+
+print(max_ans)
