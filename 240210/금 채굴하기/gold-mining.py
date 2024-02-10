@@ -49,7 +49,7 @@ for r in range(n):
                 nc = c + dc
                 if in_range(nr, nc) and board[nr][nc] == 1:
                     gold_cnt += 1
-                if gold_cnt * m > k * k + (k + 1) * (k + 1):
+                if gold_cnt * m >= k * k + (k + 1) * (k + 1):
                     ans = max(ans, gold_cnt)
 
 print(ans)
