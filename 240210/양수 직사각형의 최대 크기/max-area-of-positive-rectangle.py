@@ -18,7 +18,7 @@ def range_sum(r1, c1, r2, c2):
 def check(r1, c1, r2, c2):
     for r in range(r1, r2 + 1):
         for c in range(c1, c2 + 1):
-            if board[r][c] < 0:
+            if board[r][c] <= 0:
                 return False
     return True
 
