@@ -17,11 +17,13 @@ while True:
     for dir in range(4):
         nr, nc = r + dr[dir], c + dc[dir]
         if in_range(nr, nc) and cur_val < board[nr][nc]:
+            # 이동을 못하는 곳을 찾기 위해서 도입!
             can_move = True
             # 다음 좌표로 위치 옮김
             ans.append(board[nr][nc])
             r, c = nr, nc
             break
+    # 4방향으로 이동하지 못하면..
     if not can_move:
         break
 
