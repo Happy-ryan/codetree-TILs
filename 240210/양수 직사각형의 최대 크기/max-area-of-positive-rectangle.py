@@ -24,9 +24,9 @@ def check(r1, c1, r2, c2):
 
 max_ans = 0
 for r1 in range(n):
-    for c1 in range(n):
+    for c1 in range(m):
         for r2 in range(r1, n):
-            for c2 in range(c1, n):
+            for c2 in range(c1, m):
                 if check(r1, c1, r2, c2):
                     max_ans = max(max_ans, (abs(r1 - r2) + 1) * (abs(c1 - c2) + 1))
 
