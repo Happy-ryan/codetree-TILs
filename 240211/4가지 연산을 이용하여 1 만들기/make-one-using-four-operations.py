@@ -13,6 +13,9 @@ def bfs(n):
     dist[n] = 0
     in_queue[n] = True
 
+    if n == 1:
+        return 0
+
     while dq:
         cur = dq.popleft()
 
@@ -33,6 +36,7 @@ def bfs(n):
         else:
             dist[1] = dist[cur] + 1
             break
-    print(dist[1])
+    
+    return dist[1]
 
-bfs(n)
+print(bfs(n))
