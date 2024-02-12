@@ -3,16 +3,16 @@
 n, m = map(int, input().split())
 infos = [list(map(int, input().split())) for _ in range(n)]
 
-infos.sort(key=lambda x: -(x[1] // x[0]))
+infos.sort(key=lambda x: -(x[1] / x[0]))
 
 
 sum_val= 0
 for weight, value in infos:
     if m >= weight:
-        sum_val+= value
+        sum_val += value
         m -= weight
     else:
-        sum_val+= m * value / weight
+        sum_val += m * value / weight
         break
             
 print(f"{sum_val:.3f}")
