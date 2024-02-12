@@ -7,11 +7,12 @@ infos.sort(key=lambda x: -(x[1] // x[0]))
 
 max_value = 0
 for weight, value in infos:
-    if m > weight:
+    if m >= weight:
         max_value += value
         m -= weight
     else:
         max_value += m * (value / weight)
-        break
+        m = 0
+        
 
 print(f"{max_value:.3f}")
