@@ -15,8 +15,10 @@ def greedy(n, nums):
         sum_val += nums[s]
         if sum_val < 0:
             sum_val = 0
+            ans.append(nums[s])
+        else:
+            ans.append(sum_val)
         s += 1
-        ans.append(sum_val)
 
 greedy(n, nums)
 print(max(ans))
