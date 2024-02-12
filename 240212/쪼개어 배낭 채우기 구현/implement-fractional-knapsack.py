@@ -12,7 +12,7 @@ for weight, value in infos:
         sum_val+= value
         m -= weight
     else:
-        sum_val+= m * (value / weight)
+        sum_val+= m * value / weight
         break
             
 print(f"{sum_val:.3f}")
