@@ -1,4 +1,6 @@
-from heapq import heappush, heappn = int(input())
+from heapq import heappush, heappop
+
+n = int(input())
 nums = list(map(int, input().split()))
 
 heap = []
