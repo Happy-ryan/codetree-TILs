@@ -5,14 +5,14 @@ infos = [list(map(int, input().split())) for _ in range(n)]
 
 infos.sort(key=lambda x: -(x[1] // x[0]))
 
-max_value = 0
+
+sum_val= 0
 for weight, value in infos:
     if m >= weight:
-        max_value += value
+        sum_val+= value
         m -= weight
     else:
-        max_value += m * (value / weight)
-        m = 0
-        
-
-print(f"{max_value:.3f}")
+        sum_val+= m * (value / weight)
+        break
+            
+print(f"{sum_val:.3f}")
