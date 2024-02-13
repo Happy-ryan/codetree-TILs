@@ -10,11 +10,11 @@ money = int(input())
 dp = [-1 for _ in range(money + 1)]
 
 def dpf(money):
-    if money == 0:
-        return 0
-
     if dp[money] != -1:
         return dp[money]
+
+    if money == 0:
+        return 0
 
     ret = inf
     is_start = True
