@@ -13,6 +13,9 @@ def dpf(money):
     if money == 0:
         return 0
 
+    if dp[money] != -1:
+        return dp[money]
+
     ret = inf
     is_start = True
     for x in [2, 5]:
