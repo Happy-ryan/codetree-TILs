@@ -12,8 +12,8 @@ for i in range(n):
 
 ans = 0
 for i in range(n):
-    if nums[i] == pmin[i + 1]:
-        continue
+    # if nums[i] == pmin[i + 1]:
+    #     continue
     ans = max(ans, nums[i] -pmin[i + 1])
 
 print(ans)
