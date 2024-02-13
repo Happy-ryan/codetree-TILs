@@ -1,6 +1,8 @@
 # 동전 문제 중 동전끼리 배수가 아닌 경우의 그리디!
 # 그리디, dp도 가능해보임
 # 동전 자체를 중복사용가능하기때문에 dp 쉬운 유형
+import sys
+sys.setrecursionlimit(10**5)
 
 inf = int(1e9)
 
