@@ -9,7 +9,6 @@ while r < n:
     if ans <= sum_val:
         ans = sum_val
     else:
-        sum_val = 0
         l = r
     r += 1
 
