@@ -26,7 +26,7 @@ def solution_1(n):
 # 풀이2
 def solution_2(n):
     dp = [-1 for _ in range(n + 1)]
-
+    mod = 10007
     # n을 만들기 위한 경우의 수 + 순서가 다르면 다른 조합
     def dpf(x):
         if x == 0:
