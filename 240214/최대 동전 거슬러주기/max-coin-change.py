@@ -19,25 +19,33 @@ def solution_1(m):
         ans = -1
     return ans
 
+
 def solution_2(m):
     inf = int(1e9)
     dp = [-inf for _ in range(m + 1)]
 
     def dpf(money):
-        if dp[money] != -1:
+        if dp[money] != -inf:
             return dp[money]
         # 동전의 수이므로!!
         if money == 0:
             return 0
+
         ret = 0
+        is_start = True
         for coin in coins:
             if coin <= money:
                 ret = max(ret, dpf(money - coin) + 1)
+                is_start = False
+
+        if is_start:
+            # 불가능! 0개!
+            return 0
         
         dp[money] = ret
 
         return ret
-
+        
     ans = dpf(m)
     if ans < 0:
         ans = -1
