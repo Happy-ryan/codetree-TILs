@@ -1,20 +1,17 @@
 n, m = map(int, input().split())
-infos = [0] + [list(map(int, input().split())) for _ in range(n)]
+infos = [list(map(int, input().split())) for _ in range(n)]
 
 def sol_1():
-    # dp[i][j] i번 보석을 선택했을 때 j무게를 달성하는 '가치'
-    # 가치 - 동전의 개수 // 무게 - 동전의 원
     inf = int(1e9)
-    dp = [[ -inf for _ in range(m + 1)] for _ in range(n + 1)]
-
-    dp[0][0] = 0
-    for i in range(1, n + 1):
-        for j in range(m, -1, -1):
-            dp[i][j] = dp[i - 1][j]
-            if j - infos[i][0] >= 0:
-                dp[i][j] = max(dp[i][j], dp[i - 1][j - infos[i][0]] +  infos[i][1])
-
-
-    return max(dp[n])
+    # dp[i] = i무게를 달성했을 때의 가치가 기록이된다!!
+    # 중복 사용 가능 -> 앞에서부터 보자!
+    dp = [-inf for _ in range(m + 1)]
+    # 
+    dp[0] = 0
+    for w, v in infos:
+        for i in reversed(range(1, m + 1)):
+            if w <= i:
+                dp[i] = max(dp[i], dp[i - w] + v)
+    return max(dp)
 
 print(sol_1())
