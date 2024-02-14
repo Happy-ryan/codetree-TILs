@@ -21,7 +21,7 @@ def sol_1():
         for j in range(max_m, -1, -1):
             dp[i][j] = dp[i-1][j]
             if j >= nums[i]:
-                dp[i][j] = min(dp[i - 1][j], dp[i - 1][j - nums[i]] + 1)
+                dp[i][j] = min(dp[i][j], dp[i - 1][j - nums[i]] + 1)
 
     if max_m % 2 != 0:
         return 'No'
