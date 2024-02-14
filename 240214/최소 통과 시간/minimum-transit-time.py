@@ -20,7 +20,7 @@ def get_count(final_time):
 
 
 def binary_search(target):
-    l, r = 1, 1000000000
+    l, r = 1, int(1e14)
     ans = -1
     while l <= r:
         mid = (l + r) // 2
