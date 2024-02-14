@@ -31,8 +31,7 @@ dp = [[-1 for _ in range(m + 1)] for _ in range(n + 1)]
 
 # print(ans)
 
-def solution_1():
-    global nums
+def solution_1(nums):
     # dp[i][j] i번째 동전을 사용했을 때 금액j를 만드는 최소 동전의 수!!
     # 중복 사용이 불가   
     inf = int(1e9) 
@@ -42,8 +41,9 @@ def solution_1():
     inf = int(1e9)
     for i in range(1, n + 1):
         for j in range(m, -1, -1):
+            dp[i][j] = dp[i-1][j]
             if j - nums[i] >= 0:
-                dp[i][j] = min(dp[i - 1][j], dp[i - 1][j - nums[i]] + 1)
+                dp[i][j] = min(dp[i][j], dp[i - 1][j - nums[i]] + 1)
 
     ans = dp[n][m]
     if ans >= inf:
@@ -53,4 +53,4 @@ def solution_1():
     
     return ans
 
-print(solution_1())
+print(solution_1(nums))
