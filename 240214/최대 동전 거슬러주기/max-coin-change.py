@@ -15,7 +15,7 @@ def solution_1(m):
             if coin <= money:
                 dp[money] = max(dp[money - coin] + 1, dp[money])
     ans = dp[m]
-    if ans == -inf:
+    if ans >= -inf:
         ans = -1
     return ans
 
