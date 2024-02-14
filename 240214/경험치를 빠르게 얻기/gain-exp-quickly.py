@@ -6,9 +6,12 @@ def sol_1():
     # 그래서 가방의 문제의 경우, 가방의무게에 무게의 한도를 둔다. 동전의 문제의 경우에도 목표되는 동전 금액 즉, 한도가 있다.
     # 그런데 이 문제의 문제는 경험치를 한도를 알 수가 없다. 그러다보니 열이 매우매우 커질 수 있고 메모리 초과!!!
     # 그래서 이번에는 dp[i][j] i번째 퀘스트를 했을 때 시간(j) 만들기 위한 최대 경험치(값)
-    
+
     # 하나의 퀘스트 100초..n개 있을 수 있다!!
-    t = 100 * 100
+    
+    # 매직넘버 쓰지말자!!!
+    max_time = 100*100
+    t = max_time
     inf = int(1e9)
     dp = [[-inf for _ in range(t + 1)] for _ in range(n + 1)]
     
@@ -22,13 +25,13 @@ def sol_1():
             if j - w >= 0:
                 dp[i][j] = max(dp[i][j], dp[i - 1][j - w] + v)
 
-    min_time = 101
+    min_time = max_time
     for idx, exp in enumerate(dp[n]):
         if m <= exp:
             min_time = min(min_time, idx)
     # 불가능한 경우 항상 생각하기!!!
     ans = min_time
-    if ans >= 101:
+    if ans >= max_time:
         ans = -1
     return ans
 
