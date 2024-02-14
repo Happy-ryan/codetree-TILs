@@ -23,4 +23,29 @@ def solution_1(n):
 
     return dp[n]
 
-print(solution_1(n))
+# 풀이2
+def solution_2(n):
+    dp = [-1 for _ in range(n + 1)]
+
+    # n을 만들기 위한 경우의 수 + 순서가 다르면 다른 조합
+    def dpf(x):
+        if x == 0:
+            return 1
+        if dp[x] != -1:
+            return dp[x]
+        
+        ret = 0
+        if x == 1:
+            ret += 1
+        elif x < 5:
+            ret += dpf(x - 1) + dpf(x - 2)
+        else:
+            ret += dpf(x - 1) + dpf(x - 2) + dpf(x - 5)
+
+        dp[x] = ret
+
+        return ret
+
+    return dpf(n)
+        
+print(solution_2(n))
