@@ -37,10 +37,13 @@ def solution_2(n):
         ret = 0
         if x == 1:
             ret += 1
+            ret %= mod
         elif x < 5:
             ret += dpf(x - 1) + dpf(x - 2)
+            ret %= mod
         else:
             ret += dpf(x - 1) + dpf(x - 2) + dpf(x - 5)
+            ret %= mod
 
         dp[x] = ret
 
