@@ -1,6 +1,7 @@
 n, m = map(int, input().split())
 points = [int(input()) for _ in range(n)]
-
+points.sort()
+# 두 점 사이의 최소거리를 변수로 분다!
 def get_count(dist):
     # 가장 왼쪽은 반드시 설치
     # 두 인접한 사이의 거리의 최솟값이 dist일 때 설치할 수 있는 곳의 수
@@ -21,6 +22,7 @@ def get_count(dist):
 
 
 def binary_search(target):
+    # 거리
     l, r = 1, max(points)
     ans = -1
     while l <= r:
