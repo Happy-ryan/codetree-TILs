@@ -42,7 +42,8 @@ def solution_1():
     inf = int(1e9)
     for i in range(1, n + 1):
         for j in range(m, -1, -1):
-            dp[i][j] = min(dp[i - 1][j], dp[i - 1][j - nums[i]] + 1)
+            if j - nums[i] >= 0:
+                dp[i][j] = min(dp[i - 1][j], dp[i - 1][j - nums[i]] + 1)
 
     ans = dp[n][m]
     if ans >= inf:
