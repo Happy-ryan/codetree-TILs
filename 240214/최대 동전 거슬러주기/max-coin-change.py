@@ -40,8 +40,8 @@ def solution_2(m):
                 is_start = False
 
         if is_start:
-            # 불가능! 0개!
-            return 0
+            # 불가능! 0개! 이므로 -1이 되어야한다.
+            return -1
         
         dp[money] = ret
 
