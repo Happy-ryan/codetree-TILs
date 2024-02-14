@@ -8,8 +8,8 @@ def sol_1():
     dp = [-inf for _ in range(m + 1)]
     # 
     dp[0] = 0
-    for i in range(1, m + 1):
-        for w, v in infos:
+    for w, v in infos:
+        for i in range(1, m + 1):
             if w <= i:
                 dp[i] = max(dp[i], dp[i - w] + v)
     return max(dp)
