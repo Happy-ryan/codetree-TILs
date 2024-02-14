@@ -19,7 +19,8 @@ def solution_1(m):
         ans = -1
     return ans
 
-
+import sys
+sys.setrecursionlimit(10**5)
 def solution_2(m):
     inf = int(1e9)
     dp = [-inf for _ in range(m + 1)]
