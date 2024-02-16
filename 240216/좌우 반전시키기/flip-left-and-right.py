@@ -9,9 +9,9 @@ for i in range(1, n):
     if nums[i - 1] == 0:
         cnt += 1
         nums[i - 1] = 1
-        nums[i] = 0 if nums[i] == 1 else 1
+        nums[i] ^= 1
         if i < n - 1:
-            nums[i + 1] =  0 if nums[i + 1] == 1 else 1
+            nums[i + 1] ^= 1
 
 if nums[n - 1] == 0:
     print(-1)
