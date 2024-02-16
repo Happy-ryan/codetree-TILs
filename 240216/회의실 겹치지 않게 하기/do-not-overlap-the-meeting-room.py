@@ -10,7 +10,7 @@ last = cmds[0][1]
 cnt = 1
 for start, end in cmds[1:]:
     if last <= start:
+        last = end
         cnt += 1
-        last = start
-
+    
 print(n - cnt)
