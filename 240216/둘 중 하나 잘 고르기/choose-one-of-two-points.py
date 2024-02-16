@@ -12,11 +12,12 @@ dp = [[-inf for _ in range(n + 1)] for _ in range(2 * n + 1)]
 dp[0][0] = 0
 
 for i in range(1, 2 * n + 1):
+    red_card, blue_card = board[i]
     for j in range(n + 1):
         if i - 1 >= 0:
-            dp[i][j] = max(dp[i][j], dp[i - 1][j] + board[i][0])
+            dp[i][j] = max(dp[i][j], dp[i - 1][j] + red_card)
             if j - 1 >= 0:
-                dp[i][j] = max(dp[i][j], dp[i - 1][j - 1] + board[i][1])
+                dp[i][j] = max(dp[i][j], dp[i - 1][j - 1] + blue_card)
 
 # 파란색 카드 절반, 빨간색 카드 절반
 print(dp[2 * n][n])
