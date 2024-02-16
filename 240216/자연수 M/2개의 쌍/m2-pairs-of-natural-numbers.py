@@ -7,11 +7,9 @@ from collections import deque
 
 t = int(input())
 
-m = 0
 arr = []
 for _ in range(t):
     x, y = map(int, input().split())
-    m += x  
     arr.append([x, y])
 # 값으로 정렬, 오름차순
 arr.sort(key=lambda x: x[1])
@@ -30,11 +28,16 @@ while dq:
     if dq[last][0] == 0:
         dq.pop()
 
-    if dq[first][0] != 0 and dq[last][0] != 0:
-        # print(f"{dq[first][1]} + {dq[last][1]}")
-        ans = max(ans, dq[first][1]+ dq[last][1])
-        dq[first][0] -= 1
-        dq[last][0] -= 1
+    #  쌍을 이룰 수 있는 경우 쌍의 개수만큼 제거!
+    # (2, 8) - (4, 1) 이라고 했을 때 최대2개까지 생성 가능하므로 min(2, 4)만큼 제거
+    # 문제는 dq에 숫자 종류가 1개만 남을 경우 남은 숫자 * 2만 해도 된다. 어짜피 2 * 숫자만 나올 것이므로!
+    if len(dq) == 1:
+        ans = max(ans, dq[first][1] * 2)
+        break
 
+    ans = max(ans, dq[first][1]+ dq[last][1])
+    k = min(dq[first][0], dq[last][0])
+    dq[first][0] -= k
+    dq[last][0] -= k
 
 print(ans)
