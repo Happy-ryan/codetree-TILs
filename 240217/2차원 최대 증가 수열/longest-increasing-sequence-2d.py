@@ -19,5 +19,9 @@ def dpf(r, c):
     dp[r][c] = ret
     return ret
 
+ans = 0
+for i in range(n):
+    for j in range(m):
+        ans = max(ans, dpf(i, j))
 
-print(dpf(n - 1, m - 1))
+print(ans)
