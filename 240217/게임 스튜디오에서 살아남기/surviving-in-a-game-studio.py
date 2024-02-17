@@ -26,4 +26,5 @@ for i in range(1, n + 1):
                     dp[i][j][k] += dp[i - 1][z][k - 1]
                     dp[i][j][k] %= mod
 
-print(sum(dp[n][0] + dp[n][1] + (dp[n][2])))
+# 합치고도 mod하기!!!
+print(sum(dp[n][0] + dp[n][1] + dp[n][2]) % mod)
