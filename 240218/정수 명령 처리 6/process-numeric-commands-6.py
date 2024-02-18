@@ -17,4 +17,4 @@ for _ in range(n):
         max_q = -heappop(max_heap)
         print(max_q)
     elif cmd[0] == 'top':
-        print(max_heap[0])
+        print(-max_heap[0])
