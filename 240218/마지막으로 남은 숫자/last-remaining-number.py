@@ -10,7 +10,7 @@ while len(max_heap) >= 2:
     q1 = -heappop(max_heap)
     q2 = -heappop(max_heap)
     if q1 != q2:
-        heappush(max_heap, abs(q1 - q2))
+        heappush(max_heap, -abs(q1 - q2))
 
 
 if len(max_heap) == 0:
