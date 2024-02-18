@@ -9,7 +9,12 @@ def cal(k, nums):
     for _ in range(k):
         heappop(min_heap)
     
-    return sum(min_heap) / len(min_heap)
+    k = len(min_heap)
+    sum_val = 0
+    while min_heap:
+        sum_val += heappop(min_heap)
+    
+    return sum_val / k
 
 ans = 0
 for k in range(1, n - 1):
