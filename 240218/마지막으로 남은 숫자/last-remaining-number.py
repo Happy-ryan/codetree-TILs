@@ -16,4 +16,4 @@ while len(max_heap) >= 2:
 if len(max_heap) == 0:
     print(-1)
 else:
-    print(*max_heap)
+    print(-max_heap[0])
