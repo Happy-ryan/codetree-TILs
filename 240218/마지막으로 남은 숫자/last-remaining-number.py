@@ -9,7 +9,11 @@ for x in nums:
 while len(max_heap) >= 2:
     q1 = -heappop(max_heap)
     q2 = -heappop(max_heap)
-    heappush(max_heap, abs(q1 - q2))
+    if q1 != q2:
+        heappush(max_heap, abs(q1 - q2))
 
 
-print(*max_heap)
+if len(max_heap) == 0:
+    print(-1)
+else:
+    print(*max_heap)
