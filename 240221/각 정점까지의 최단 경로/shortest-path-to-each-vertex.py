@@ -37,5 +37,5 @@ bfs(k)
 for idx in range(1, n + 1):
     ans = visited[idx]
     if ans >= inf:
-        ans -= 1
+        ans = -1
     print(ans)
