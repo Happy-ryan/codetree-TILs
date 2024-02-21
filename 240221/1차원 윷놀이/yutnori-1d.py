@@ -1,0 +1,78 @@
+# n, m, k = map(int, input().split())
+# move_numbers = list(map(int, input().split()))
+
+# # board - 공의 시작점이 1부터 시작이다!
+# # board의 각 인덱스가 공의 좌표를 의미한다.
+# # 1번에서 시작하기 때문에 board의 초기값은 1로 설정하는 것이 맞다.
+# # 1로 설정했을 때 m 이 1인 경우 공들이 아예 못 움직이는 경우가 있다.
+# # 그러므로 0으로 설정하되 판단할 때 m 이 아니라 m - 1로 판단하는 것이 괜찮아 보인다.
+# board = [0 for _ in range(k + 1)]
+
+# # 움직임이 이미 정해져있을 때 말들을 선택할 수 있는 조합을 만들고 최대 점수를 먹는 것!
+# # 각 말은 1 1 1  / 1 2 1 ...이렇게 선택될 수 있다. > 중복순열
+# # simple유형이라고 생각할 수 있지만 이미 m번으로 이동한 말의 경우 점수에 영향을 주지 못하고 이동횟수만 소진하게 된다.
+# # 따라서 m에 도착한 말은 선택되지 않도록 경우의 수를 생성해야한다. (conditional)
+# # 중복조합 + conditional
+
+# # board에 move_number에 따른 공의 좌표를 기록한다. ans필요없음!
+# max_score = 0
+# def dfs(level):
+#     global max_score
+
+#     # level이 n까지 도달하지 못하도록 갱신시키기...
+#     # if level==n안에서 갱신시키면 level이 m에 도착했지만 n 레벨에 도달하지 못하면 갱신을 하지 못한다.
+#     # 따라서 n번 미만 움직이더라도 갱신되도록 해야한다.
+#     sum_val = sum([1 for x in board if x >= m - 1])
+#     max_score = max(max_score, sum_val)
+
+#     if level == n:
+#         # sum_val = sum([1 for x in board if x >= m - 1])
+#         # print(f"sum_val: {sum_val}, board: {board}")
+#         # max_score = max(max_score, sum_val)
+#         return
+    
+#     for cur_dice in range(1, k + 1):
+#         # conditional
+#         # k = 1 일 때 continue로 들어가버리면 level이 n까지 가지 못하고 종료된다.
+#         if board[cur_dice] >= m:
+#             continue
+#         board[cur_dice] += move_numbers[level]
+#         dfs(level + 1)
+#         board[cur_dice] -= move_numbers[level]
+
+# # k = 1일때 level == n에 안들어감...왜?
+# # k = 1 일 때 continue로 들어가버리면 level이 n까지 가지 못하고 종료된다.
+
+# dfs(0)
+# print(max_score)
+
+# 턴의 수, 판의 상태, 말의 수
+n, m, k = map(int, input().split())
+nums = list(map(int, input().split()))
+board = [0 for _ in range(1 + m)]
+# nums에 말을 배치해야함!
+mals = []
+max_ans = 0
+def dfs(level):
+    global max_ans
+    if level == n:
+        max_ans = max(max_ans, calculate(mals))
+        return
+
+    for i in range(1, k + 1):
+        mals.append(i)
+        dfs(level + 1)
+        mals.pop()
+
+def calculate(mals):
+    score = [1] * (k + 1)
+    for mal, num in zip(mals, nums):
+        score[mal] += num
+    final_score = 0
+    for s in score:
+        if s >= m:
+            final_score += 1
+    return final_score
+
+dfs(0)
+print(max_ans)
