@@ -41,4 +41,4 @@ for idx in range(2, n + 1):
     ans = visited[idx]
     if ans >= inf:
         ans = -1
-    print(visited[idx])
+    print(ans)
