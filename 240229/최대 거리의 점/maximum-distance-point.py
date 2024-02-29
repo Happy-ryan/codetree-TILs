@@ -43,7 +43,8 @@ n, m = map(int, input().split())
 points = [int(input()) for _ in range(n)]
 
 def solution(n, m, points):
-    
+    # 이분탐색, 투포인터 반드시 정렬
+    points.sort()
     # 이분탐색의 대상이 되는 존재 - 두 물건사이의 최소거리를 변수로 둔다!
     # 최소거리를 dist라고 했을 때, 설치할 수 있는 물건의 수
     def get_material(dist):
